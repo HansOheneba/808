@@ -26,13 +26,13 @@ const Header = () => {
   }, []);
 
   const linkClasses = (path: string) =>
-    `text-gray-700 hover:text-black font-medium ${
-      pathname === path ? "font-bold text-black" : ""
-    }`;
+    pathname === path
+      ? "font-bold text-black uppercase underline"
+      : "text-gray-700 hover:text-black font-medium uppercase";
 
   return (
     <>
-    <div className="pt-20"></div>
+      <div className="pt-20"></div>
       <header
         className={`fixed w-full z-50 top-0 left-0 transition-all duration-300 ${
           isScrolled ? "bg-white border-b shadow-sm" : "bg-transparent"
