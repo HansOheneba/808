@@ -9,6 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className=" bg-airbanBlue animate-fade min-h-screen flex flex-col">
+      
       <Header />
       {children}
       <Footer />
