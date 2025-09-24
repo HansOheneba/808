@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Header from "./layout/header";
-import Image from "next/image";
+// import Image from "next/image";
 
 const LandingPage = () => {
   return (
@@ -19,7 +19,7 @@ const LandingPage = () => {
             <p className="mb-2">LOCATION: [REDACTED]</p>
             <p className="mb-6">WAITLIST RELEASE 10.10.25</p>
             <Link
-              href="/midnight-madness-3"
+              href="/mm3"
               className="underline font-medium hover:text-gray-700"
             >
               LEARN MORE

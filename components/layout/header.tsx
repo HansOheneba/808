@@ -13,6 +13,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/blueprint", label: "The Blueprint" },
+  { href: "/mm3", label: "Midnight Madness 3" },
+  { href: "/contact", label: "Contact Us" },
+];
+
 const Header = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,14 +62,15 @@ const Header = () => {
 
           {/* Desktop navigation */}
           <div className="hidden md:flex w-full items-center justify-evenly">
-            <Link href="/" className={linkClasses("/")}>
-              Home
-            </Link>
-
-            <Link href="/blueprint" className={linkClasses("/blueprint")}>
-              The Blueprint
-            </Link>
-
+            {NAV_LINKS.slice(0, 2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={linkClasses(link.href)}
+              >
+                {link.label}
+              </Link>
+            ))}
             {/* Logo in the middle */}
             <Link href="/" className="flex-shrink-0">
               <Image
@@ -74,17 +82,15 @@ const Header = () => {
                 className="object-contain"
               />
             </Link>
-
-            <Link
-              href="/midnight-madness-3"
-              className={linkClasses("/midnight-madness-3")}
-            >
-              Midnight Madness 3
-            </Link>
-
-            <Link href="/contact" className={linkClasses("/contact")}>
-              Contact Us
-            </Link>
+            {NAV_LINKS.slice(2).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={linkClasses(link.href)}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile menu */}
@@ -101,21 +107,15 @@ const Header = () => {
                 </SheetHeader>
 
                 <div className="mt-6 flex flex-col space-y-4">
-                  <Link href="/" className={linkClasses("/")}>
-                    Home
-                  </Link>
-                  <Link href="/blueprint" className={linkClasses("/blueprint")}>
-                    The Blueprint
-                  </Link>
-                  <Link
-                    href="/midnight-madness-3"
-                    className={linkClasses("/midnight-madness-3")}
-                  >
-                    Midnight Madness 3
-                  </Link>
-                  <Link href="/contact" className={linkClasses("/contact")}>
-                    Contact Us
-                  </Link>
+                  {NAV_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={linkClasses(link.href)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
               </SheetContent>
             </Sheet>
