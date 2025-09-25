@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sheet";
 
 const NAV_LINKS = [
-  // { href: "/", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "/blueprint", label: "The Blueprint" },
   { href: "/mm3", label: "Midnight Madness 3" },
   { href: "/contact", label: "Contact Us" },
@@ -83,7 +83,7 @@ const Header = () => {
                 className="object-contain"
               />
             </Link>
-            {NAV_LINKS.slice(0, 2).map((link) => (
+            {NAV_LINKS.slice(1, 2).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
