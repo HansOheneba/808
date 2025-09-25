@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 
 const NAV_LINKS = [
+  // { href: "/", label: "Home" },
   { href: "/blueprint", label: "The Blueprint" },
   { href: "/mm3", label: "Midnight Madness 3" },
   { href: "/contact", label: "Contact Us" },
@@ -31,17 +32,28 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Detect if on /mm3 page
+  const isMM3 = pathname === "/mm3" || pathname === "/public/mm3";
+
   const linkClasses = (path: string) =>
     pathname === path
-      ? "font-bold text-black uppercase underline"
-      : "text-gray-700 hover:text-black font-medium uppercase";
+      ? `font-bold ${isMM3 ? "text-lime-500" : "text-black"} uppercase underline`
+      : `${
+          isMM3
+            ? "text-lime-500 hover:text-lime-700"
+            : "text-gray-700 hover:text-black"
+        } font-medium uppercase`;
 
   return (
     <>
       <div className="pt-20"></div>
       <header
         className={`fixed w-full z-50 top-0 left-0 transition-all duration-300 ${
-          isScrolled ? "bg-white border-b shadow-sm" : "bg-transparent"
+          isMM3
+            ? "bg-black/10 backdrop-blur-2xl"
+            : isScrolled
+            ? "bg-white border-b shadow-sm"
+            : "bg-transparent"
         }`}
       >
         <nav className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-5">
@@ -49,7 +61,7 @@ const Header = () => {
           <div className="flex md:hidden justify-center">
             <Link href="/" className="flex-shrink-0">
               <Image
-                src="/assets/logo.png"
+                src={isMM3 ? "/assets/808green.png" : "/assets/logo.png"}
                 alt="Logo"
                 width={60}
                 height={30}
@@ -63,7 +75,7 @@ const Header = () => {
           <div className="hidden md:flex w-full items-center justify-between">
             <Link href="/" className="flex-shrink-0">
               <Image
-                src="/assets/logo.png"
+                src={isMM3 ? "/assets/808green.png" : "/assets/logo.png"}
                 alt="Logo"
                 width={60}
                 height={30}
@@ -96,11 +108,21 @@ const Header = () => {
           <div className="md:hidden ml-auto">
             <Sheet>
               <SheetTrigger>
-                <Menu size={28} className="text-gray-700" />
+                <Menu
+                  size={28}
+                  className={isMM3 ? "text-white" : "text-gray-700"}
+                />
               </SheetTrigger>
-              <SheetContent side="left" className="bg-white px-5">
+              <SheetContent
+                side="left"
+                className={isMM3 ? "bg-black px-5" : "bg-white px-5"}
+              >
                 <SheetHeader>
-                  <SheetTitle className="text-lg font-semibold">
+                  <SheetTitle
+                    className={`text-lg font-semibold ${
+                      isMM3 ? "text-white" : ""
+                    }`}
+                  >
                     Menu
                   </SheetTitle>
                 </SheetHeader>

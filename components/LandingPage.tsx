@@ -9,7 +9,7 @@ const LandingPage = () => {
   return (
     <>
       <Header />
-      <main className="max-w-6xl mx-auto p-6">
+      <main className="max-w-6xl mx-auto p-6 w-full">
         {/* Midnight Madness 3 Section */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-16">
           {/* Left: Event Info */}
